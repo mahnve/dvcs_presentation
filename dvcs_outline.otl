@@ -14,7 +14,7 @@ My story
 | hard time accepting centralized VCS though.
 Intro
 	How centralized VCS work
-	| image: centralized_vcs.svg
+	| [image: centralized_vcs.svg]
 		Problems
 			Offline
 			| No such thing
@@ -25,7 +25,7 @@ Intro
 			Merging
 			| Normally suck at branching
 	How Decentralized VCS work
-	| image: decentralized_vcs.svg
+	| [image: decentralized_vcs.svg]
 	Known Projects Using
 		Mercurial
 			OpenSolaris
@@ -67,4 +67,27 @@ Git
 	| git config --global user.email "marcus@ahnve.com"
 	| 
 	| ends up in .gitconfig
-
+	New Repo
+		git init
+		| Nu har vi ett repo!
+		vim test.txt
+		| write text
+		git status
+		| show that there is a file
+		git add .
+		| add files
+		git status
+		git commit -m 'test'
+		vim test.txt
+		| ändra filen
+		git status
+		| vad hände vi måste lägga till den igen?
+		git commit -a -m 'another commit'
+	Workflow overview 
+	| [image: git_workflow_overview.svg]
+	Branching
+	Remote
+	| ssh, http,  https or git
+	|
+	| a clone is a complete copy
+		GitHub
