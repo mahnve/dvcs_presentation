@@ -1,0 +1,70 @@
+My story
+| Started working for a startup a few years back, as only developer. 
+| Wanted to be able to work offline, and wondered if I could take
+| svn repo offline. Started looking into it.
+|
+| Main contenders back then was git, Mercurial, bzr and svk. Svk seemed 
+| like a mutant, bzr was slow and git was incredibly complex and Mercurial
+| was just right. 
+|
+| Used hg for a year, during a time where git got a lot easier to use, and 
+| a large number of people migrated to it.
+|
+| These days I favor git, but don't mind using Mercurial. I do have a very
+| hard time accepting centralized VCS though.
+Intro
+	How centralized VCS work
+	| image: centralized_vcs.svg
+		Problems
+			Offline
+			| No such thing
+			Branching
+			| Big things 
+			Small commits
+			| implemented in IDE's instead
+			Merging
+			| Normally suck at branching
+	How Decentralized VCS work
+	| image: decentralized_vcs.svg
+	Known Projects Using
+		Mercurial
+			OpenSolaris
+			OpenJDK
+			Netbeans
+			Adium
+			Growl
+			Go
+			mutt
+			OpenOffice
+			Python
+			wget
+			XEmacs
+		Bazaar
+			Ubuntu
+			MariaDb
+			MySQL
+			Squid
+		Git
+			Linux Kernel
+			Rails
+			Perl
+			Gnome
+			QT
+			Android
+			Fedora
+			Debian
+			X
+			VLC
+			gcc
+			jQuery
+	Size
+	| Rails checkout is 13M. A single checkout is 9M. Rails svn repo was 115 M.
+Mercurial
+| Starting here since it looks most like Subversion
+Git
+	Set up profile
+	| git config --global user.name "Marcus Ahnve"
+	| git config --global user.email "marcus@ahnve.com"
+	| 
+	| ends up in .gitconfig
+
