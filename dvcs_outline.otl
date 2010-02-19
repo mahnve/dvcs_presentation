@@ -83,9 +83,30 @@ Git
 		git status
 		| vad hände vi måste lägga till den igen?
 		git commit -a -m 'another commit'
+		git log
 	Workflow overview 
 	| [image: git_workflow_overview.svg]
+	Ignoring files
+	| .gitignore
+	|
+	| log/*
+	| etc
 	Branching
+		git branch something_new
+		git checkout something_new
+		git checkout -b something_else
+		git branch
+		| Shows branches
+		vim test.txt
+		| edit some text
+		git commit -a -m 'minor edit'
+		git checkout master
+		vim test.txt
+		| Whoah! Where did the text go?
+		git log
+		git merge something_else
+		git log
+		git branch -d something_else
 	Remote
 	| ssh, http,  https or git
 	|
