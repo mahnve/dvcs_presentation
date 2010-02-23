@@ -33,6 +33,10 @@ Intro How centralized VCS work
 			| Normally suck at branching
 	How Decentralized VCS work
 	| [image: decentralized_vcs.svg]
+	Pull style collaboration
+	[image: pull_style_collaboration.svg]
+	Central master repository
+	[image: central_master_repository.svg]
 	Known Projects Using Mercurial
 		| [image: project_using_mercurial.svg]
 			OpenSolaris OpenJDK Netbeans Adium Growl Go mutt OpenOffice Python
@@ -47,52 +51,118 @@ Intro How centralized VCS work
 Mercurial
 	Set up profile
 	| vim .hgrc
-	hg init myproject
-	| new repo. Uses current dir unless 
-	vim test.txt
-	| write some text
-	hg status
-	| ? shows that the repo does not recognize the file.
-	hg add
-	hg st
-	| A - it is added
-	hg diff
-	| shows whats new
-	hg commit 
-	| opens up editor - write commit message
-	hg st
-	| shows nothing
-	hg log
-	| shows what has happened
-	Hash as identifier
-	| Since we have concurrent repos we cannot have sequential numbering, hg
-	| has local numbering which will not be the same across repos.
-	hg cp test.txt test2.txt
-	hg commit
-	hg mv test.txt test1.txt
-	hg update 1
-	| Backing one version
-	hg identify -n
-	| Shows which version we're at
-	hg update tip
-	| tip is the latest version
-	hg update 1
-	vim test2.txt
-	| edit text
-	hg commit
-	| new head
-	hg merge
-	hg st
-	hg commit -m 'merge'
-	hgview
+	New Repo
+		hg init myproject
+		| new repo. Uses current dir unless 
+		vim test.txt
+		| write some text
+		hg status
+		| ? shows that the repo does not recognize the file.
+		hg add
+		hg st
+		| A - it is added
+		hg diff
+		| shows whats new
+		hg commit 
+		| opens up editor - write commit message
+		hg st
+		| shows nothing
+		hg log
+		| shows what has happened
+		Hash as identifier
+		| Since we have concurrent repos we cannot have sequential numbering, hg
+		| has local numbering which will not be the same across repos.
+	Moving files
+		hg cp test.txt test2.txt
+		hg commit
+		hg mv test.txt test1.txt
+		hg st
+	Fixing history
+		hg update 1
+		| Backing one version
+		hg identify -n
+		| Shows which version we're at
+		hg update tip
+		| tip is the latest version
+		hg update 1
+		vim test2.txt
+		| edit text
+		hg commit
+		| new head
+		hg merge
+		hg st
+		hg commit -m 'merge'
+		hgview
+	Merging three heads
+		hg update 5
+		vim test2.txt
+		hg commit -m 'first edit'
+		hg update 1
+		vim test2.txt
+		hg commit -m 'second edit'
+		hg merge
+		| aborts!
+		hg merge
+	Resolving merge problem
+		hg resolve --mark <file>
+	Recovering 
+		hg revert <filename>
+	Changing renamed files
+		hg update 1
+		vim test.txt 
+		| renamed later
+		hg commit
+		hg merge
+		| voila!
+	Branching
+		Cloned branches
+			cd ..
+			hg clone <repo> <repo2>
+			cd repo2
+			vim test2.txt
+			hg commit 
+			hg outgoing
+			| Knows parent
+			cd -
+			hg incoming
+			| does not know children
+			hg incoming ../<new repo>
+			cd -
+			hg push
+			vim test2.txt
+			cd -
+			hg pull
+			hg update
+			| could result in merge of course
+		Named branches
+			hg branch <name>
+			| branches stay in commit history
+	Rolling back
+		hg rollback
+		| rolls back last commit
+		| Watch out if this is pull repo
+		hg backout
+		| can roll back a changeset
+	Sharing 
+		hg serve -v
+		| does not allow push by default
+	Tagging
+		hg tag REL_1.0
+		hg tag -r <commit> tagname
+		hg tags
+		| shows tags
+		hg up REL_1.0
 | Starting here since it looks most like Subversion
 	BitBucket
-Git Set up profile
+Git 
+| [image: git_workflow.svg]
+	Set up profile
 	| git config --global user.name "Marcus Ahnve" git config --global
 	| user.email "marcus@ahnve.com"
 	| 
 	| ends up in .gitconfig
-	New Repo git init
+	New Repo 
+		git init
 		| Nu har vi ett repo!
 		vim test.txt
 		| write text
@@ -104,14 +174,34 @@ Git Set up profile
 		| ändra filen
 		git status
 		| vad hände vi måste lägga till den igen?
-		git commit -a -m 'another commit' git log Workflow overview 
+		git commit -a -m 'another commit' 
+		git log Workflow overview 
+		git cp
+		git mv
+		git co <old>
+		vim test.txt
+		git commit -m 'message'
+		git st
+		| Detached head
+		gitk
+		git co -b 'a branch'
+		gitk
+		git rebase master
+		git co master
+		git merge b
+		git branch -d b
 	| [image: git_workflow_overview.svg]
 	Ignoring files
 	| .gitignore
 	|
 	| log/* etc
-	Branching git branch something_new git checkout something_new git checkout
-	-b something_else git branch
+	Branching 
+		Feature branches
+		| [image: feature_branches.svg]
+		git branch something_new 
+		git checkout something_new 
+		git checkout -b something_else 
+		git branch
 		| Shows branches
 		vim test.txt
 		| edit some text
@@ -120,6 +210,10 @@ Git Set up profile
 		git log git merge something_else git log git branch -d something_else
 		Remote
 	| ssh, http,  https or git
-	|
 	| a clone is a complete copy
 		GitHub
+Problems deciding?
+| [image: gitvsmercurial.svg]
+| Help can be found at http://www.gitvsmercurial.com
+Thankyou!
+| [image: thankyou.svg]
