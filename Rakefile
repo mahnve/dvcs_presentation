@@ -1,5 +1,5 @@
 BUILD_DIR='build'
-BUILD_FILE= BUILD_DIR + '/testing_android_presentation.pdf'
+BUILD_FILE= BUILD_DIR + '/dvcs_presentation.pdf'
 
 task :default => :build
 
