@@ -168,6 +168,10 @@ Git
 		| vad hände vi måste lägga till den igen?
 		git commit -a -m 'another commit' 
 		git log Workflow overview 
+	Logging
+		git log --stat
+		git log --graph
+		git log --pretty=oneline
 	Branching 
 	| git is all about branching so lets start early
 		Feature branches
@@ -192,6 +196,8 @@ Git
 			git reset --hard HEAD
 			git reset --hard ORIG_HEAD
 			| if you already commited
+		Remote branches
+		| git can follow remote branches, will not get into details
 	| ssh, http,  https or git
 	| a clone is a complete copy
 		GitHub
@@ -214,13 +220,25 @@ Git
 		git branch -d b
 	| [image: git_workflow_overview.svg]
 	Recovering files
+		git checkout <filename>
+		| for one file
 		git reset --hard HEAD
 		| soft leaves index and working tree
 		| mixed resets index but not working tree
+	git stash <message>
+	| working on something, need to put it away temporarily
+		git stash apply
+		| to go back to where you were
 	Ignoring files
 	| .gitignore
 	|
 	| log/* etc
+	git bisect
+		git bisect start
+		git bisect bad <rev>
+		git bisect good master
+		git bisect bad
+		git bisect good
 	Working remote
 		remotes
 			git add remote another /home/mahnve/tmp/gittmp2
@@ -228,6 +246,7 @@ Git
 		GitHub
 		| [image: github.svg]
 			Set up new repo at github
+	git-svn
 Problems deciding?
 | [image: gitvsmercurial.svg]
 | Help can be found at http://www.gitvsmercurial.com
